@@ -9,6 +9,7 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
 
   <title>Hello, world!</title>
 </head>
@@ -33,17 +34,37 @@
           <li class="nav-item">
             <a class="nav-link" href="/about">Tentang</a>
           </li>
+          @auth
           <li class="nav-item">
-            <a class="nav-link " href="/daftarpesan" tabindex="-1" >Daftar Pesanan</a>
+            <a class="nav-link " href="{{ auth()->user()->role }}/daftarpesan" tabindex="-1" >Daftar Pesanan</a>
           </li>
+          @endauth
         </ul>
         <ul class="navbar-nav ms-auto">
+          @auth
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle"></i> {{ auth()->user()->namadepan }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Dashboard</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <form action="/logout" method="POST">
+                  @csrf
+                  <button type="submit" class="dropdown-item">LogOut</button>
+                </form>
+              </li>
+            </ul>
+          </li>
+          @else
           <li class="nav-item me-3">
             <a href="/login" class="nav-link border border-1 rounded-pill">LOGIN</a>
           </li>
           <li class="nav-item">
             <a href="/registrasi" class="nav-link border border-primary rounded-pill">REGISTER</a>
           </li>
+          @endauth
         </ul>
       </div>
     </div>

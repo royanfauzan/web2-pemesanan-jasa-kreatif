@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 use function Ramsey\Uuid\v1;
@@ -23,17 +25,20 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::get('/login', function () {
-    return view('login.login');
-});
+Route::get('/login', [LoginController::class,'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class,'ceklogin']);
+Route::post('/logout', [LoginController::class,'logout']);
 
-Route::get('/registrasi', function () {
-    return view('login.registrasi');
-});
+Route::get('/registrasi', [RegisterController::class,'index'])->middleware('guest');
+Route::post('/registrasi',[RegisterController::class,'store']);
 
-Route::get('/daftarpesan', function () {
+Route::get('user/daftarpesan', function () {
     return view('pemesanan.daftarpesan');
-});
+})->middleware('auth');
+
+Route::get('admin/daftarpesan', function () {
+    return view('pemesanan.daftarpesan');
+})->middleware(['auth','test_admin']);
 
 Route::get('/about', function () {
     return view('about');
@@ -41,6 +46,6 @@ Route::get('/about', function () {
 
 Route::get('/pesanjasa', function () {
     return view('pemesanan.pesanjasa');
-});
+})->middleware('auth');
 
 
