@@ -36,7 +36,11 @@
           </li>
           @auth
           <li class="nav-item">
-            <a class="nav-link " href="{{ auth()->user()->role }}/daftarpesan" tabindex="-1" >Daftar Pesanan</a>
+            <a class="nav-link " href="@if(!strcmp(auth()->user()->role,'admin'))
+            /daftarpesan-admin
+            @else
+            /daftarpesan-user
+            @endif" tabindex="-1" >Daftar Pesanan</a>
           </li>
           @endauth
         </ul>

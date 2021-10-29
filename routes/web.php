@@ -32,11 +32,11 @@ Route::post('/logout', [LoginController::class,'logout']);
 Route::get('/registrasi', [RegisterController::class,'index'])->middleware('guest');
 Route::post('/registrasi',[RegisterController::class,'store']);
 
-Route::get('user/daftarpesan', function () {
+Route::get('/daftarpesan-user', function () {
     return view('pemesanan.daftarpesan');
 })->middleware('auth');
 
-Route::get('admin/daftarpesan', function () {
+Route::get('/daftarpesan-admin', function () {
     return view('pemesanan.daftarpesan');
 })->middleware(['auth','test_admin']);
 
