@@ -16,9 +16,16 @@ class PesananController extends Controller
     public function index()
     {
         //
-        return view('pemesanan.pesanjasa');
+        if(!strcmp(auth()->user()->role,'admin')){
+            return view('pemesanan.daftarpesan-admin', [
+                'pesanans'=> Pesanan::all()
+            ]);
+        }
+        return view('pemesanan.daftarpesan', [
+            'pesanans'=> Pesanan::where('user_id',auth()->user()->id)->get()
+        ]);
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -27,6 +34,7 @@ class PesananController extends Controller
     public function create()
     {
         //
+        return view('pemesanan.pesanjasa');
        
     }
 

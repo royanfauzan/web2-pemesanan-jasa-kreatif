@@ -18,6 +18,8 @@
       <th scope="col">Judul Proyek</th>
       <th scope="col">Status</th>
       <th scope="col">Deskripsi</th>
+      <th scope="col">Aksi</th>
+      
     </tr>
   </thead>
   <tbody>
@@ -27,11 +29,10 @@
         <td>{{ $pesanan->judul_proyek }}</td>
         <td>{{ $pesanan->status }}</td>
         <td>{{ $pesanan->deskripsi }}</td>
+        <td></td>
         </tr>   
     @endforeach
     
   </tbody>
 </table>
-</div>
-</div>
 @endsection
