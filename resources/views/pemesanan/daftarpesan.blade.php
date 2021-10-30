@@ -30,7 +30,7 @@
         <td>{{ $pesanan->status }}</td>
         <td>{{ $pesanan->deskripsi }}</td>
         <td>
-          <a class="btn btn-primary" href="/pesanjasa/{{ $pesanan->id }}/edit">Detail</a>
+          <a class="btn btn-primary" href="/pesanans/{{ $pesanan->id }}">Detail</a>
         </td>
         </tr>   
     @endforeach

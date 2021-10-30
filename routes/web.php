@@ -49,6 +49,6 @@ Route::get('/about', function () {
 //     return view('pemesanan.pesanjasa');
 // })->middleware('auth');
 
-Route::resource('/pesanjasa', PesananController::class)->middleware('auth');
+Route::resource('/pesanans', PesananController::class)->middleware('auth');
 
 

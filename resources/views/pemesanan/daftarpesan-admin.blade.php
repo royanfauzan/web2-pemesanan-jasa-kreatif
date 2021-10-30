@@ -32,7 +32,7 @@
         <td>
           <div class="d-flex flex-row">
             <div class="p2 me-2">
-              <form clas="d-inline" method='POST' action="/pesanjasa/{{ $pesanan->id }}">
+              <form clas="d-inline" method='POST' action="/pesanans/{{ $pesanan->id }}">
               @method('PATCH')
               @csrf
               <input type='hidden' name="id" value="{{ $pesanan->id }}"></input>
@@ -41,7 +41,7 @@
               </form>
             </div>
             <div class="p2">
-              <a class="btn btn-primary" href="/pesanjasa/{{ $pesanan->id }}/edit">Detail</a>
+              <a class="btn btn-primary" href="/pesanans/{{ $pesanan->id }}">Detail</a>
             </div>
           </div>
         </td>

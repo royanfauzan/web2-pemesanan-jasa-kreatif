@@ -76,6 +76,10 @@ class PesananController extends Controller
     public function show(Pesanan $pesanan)
     {
         //
+        
+        return view('pemesanan.detailpesanan',[
+            'pesanan'=>$pesanan
+        ]);
     }
 
     /**
@@ -87,6 +91,7 @@ class PesananController extends Controller
     public function edit(Pesanan $pesanan)
     {
         //
+        
     }
 
     /**
@@ -99,6 +104,18 @@ class PesananController extends Controller
     public function update(Request $request, Pesanan $pesanan)
     {
         //
+        if(!strcmp(auth()->user()->role,'user')){
+            $validatedData = $request->validate([
+                'judul_proyek' => 'required',
+                'deskripsi' => 'required',
+                'dedline' => 'required',
+                'budget' => 'required' 
+            ]);
+            // dd($request->input('id'));
+            Pesanan::where('id',$pesanan->id)->update($validatedData);
+            return redirect('/dashboard');
+        }
+
         $validatedData = $request->validate([
             'status' => 'required'
         ]);
