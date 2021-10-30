@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row mt-4">
-<div class="col-md-5 justify-content-center">
+<div class="col-md-4 justify-content-center">
 <div class="row justify-content-center">
     <div class="col-6">
         <img class="mb-4 img-center rounded" src="profil.jpg" alt="" width="120" height="120">
@@ -10,7 +10,7 @@
 </div>
 </div>
 
-<div class="col-md-7">
+<div class="col-md-8">
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -29,7 +29,22 @@
         <td>{{ $pesanan->judul_proyek }}</td>
         <td>{{ $pesanan->status }}</td>
         <td>{{ $pesanan->deskripsi }}</td>
-        <td></td>
+        <td>
+          <div class="d-flex flex-row">
+            <div class="p2 me-2">
+              <form clas="d-inline" method='POST' action="/pesanjasa/{{ $pesanan->id }}">
+              @method('PATCH')
+              @csrf
+              <input type='hidden' name="id" value="{{ $pesanan->id }}"></input>
+                <button class="btn btn-success" type='submit' name="status" value="Diterima">Accept</button>
+                <button class="btn btn-outline-danger" type='submit' name="status" value="Ditolak">Decline</button>
+              </form>
+            </div>
+            <div class="p2">
+              <a class="btn btn-primary" href="/pesanjasa/{{ $pesanan->id }}/edit">Detail</a>
+            </div>
+          </div>
+        </td>
         </tr>   
     @endforeach
     

@@ -99,6 +99,12 @@ class PesananController extends Controller
     public function update(Request $request, Pesanan $pesanan)
     {
         //
+        $validatedData = $request->validate([
+            'status' => 'required'
+        ]);
+        // dd($request->input('id'));
+        Pesanan::where('id',$request->input('id'))->update($validatedData);
+        return redirect('/dashboard');
     }
 
     /**
