@@ -62,7 +62,7 @@ class PesananController extends Controller
 
         Pesanan::create($validatedData);
 
-        $request->session()->flash('success','Akun Berhasil Didaftarkan');
+        $request->session()->flash('success','Pesanan Berhasil Di Simpan');
 
         return redirect('/dashboard');
     }
@@ -76,7 +76,11 @@ class PesananController extends Controller
     public function show(Pesanan $pesanan)
     {
         //
-        
+        if(!strcmp(auth()->user()->role,'admin')){
+            return view('pemesanan.detailpesanan-admin', [
+                'pesanan'=> $pesanan
+            ]);
+        }
         return view('pemesanan.detailpesanan',[
             'pesanan'=>$pesanan
         ]);
@@ -113,6 +117,7 @@ class PesananController extends Controller
             ]);
             // dd($request->input('id'));
             Pesanan::where('id',$pesanan->id)->update($validatedData);
+            $request->session()->flash('success','Pesanan Berhasil Di Ubah'); 
             return redirect('/dashboard');
         }
 
@@ -121,6 +126,7 @@ class PesananController extends Controller
         ]);
         // dd($request->input('id'));
         Pesanan::where('id',$request->input('id'))->update($validatedData);
+        $request->session()->flash('success','Status Pesanan Berhasil Di Ubah');
         return redirect('/dashboard');
     }
 
