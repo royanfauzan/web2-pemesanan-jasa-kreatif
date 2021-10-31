@@ -4,7 +4,7 @@
 
 <div class="row justify-content-center mt-4">
     <div class="col-md-6">
-    <form action="/pesanjasa" method="post">
+    <form action="/pesanans" method="post">
     @csrf
     <h1 class="h3 mb-4 fw-normal text-center text-primary"><b>PEMESANAN</b></h1>
     <div class="mb-3 row">
