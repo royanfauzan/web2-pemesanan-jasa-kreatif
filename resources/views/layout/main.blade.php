@@ -29,7 +29,7 @@
             <a class="nav-link" href="/dashboard">Beranda</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/pesanjasa">Pesan Jasa</a>
+            <a class="nav-link" href="/pesanans/create">Pesan Jasa</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/about">Tentang</a>
@@ -37,9 +37,11 @@
           @auth
           <li class="nav-item">
             <a class="nav-link " href="@if(!strcmp(auth()->user()->role,'admin'))
-            /daftarpesan-admin
+
+            /pesanans
             @else
-            /daftarpesan-user
+            /pesanans
+
             @endif" tabindex="-1" >Daftar Pesanan</a>
           </li>
           @endauth

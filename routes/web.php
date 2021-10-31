@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+
+use App\Http\Controllers\PesananController;
+
 use Illuminate\Support\Facades\Route;
 
 use function Ramsey\Uuid\v1;
@@ -44,8 +47,12 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/pesanjasa', function () {
-    return view('pemesanan.pesanjasa');
-})->middleware('auth');
+
+// Route::get('/pesanjasa', function () {
+//     return view('pemesanan.pesanjasa');
+// })->middleware('auth');
+
+Route::resource('/pesanans', PesananController::class)->middleware('auth');
+
 
 
