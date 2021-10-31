@@ -1,6 +1,7 @@
 @extends('layout.main')
 
 @section('content')
+
 <div class="row justify-content-center mt-4">
     <div class="col-md-6">
     <form action="/pesanjasa" method="post">
@@ -57,5 +58,6 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     </div>
+
 </div>
 @endsection

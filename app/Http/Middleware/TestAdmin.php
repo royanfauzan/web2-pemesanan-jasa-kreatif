@@ -21,4 +21,6 @@ class TestAdmin
         }
         return redirect('/dashboard')->with('aksesError','Halaman hanya dapat diakses admin');
     }
+
 }
+

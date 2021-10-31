@@ -37,9 +37,11 @@
           @auth
           <li class="nav-item">
             <a class="nav-link " href="@if(!strcmp(auth()->user()->role,'admin'))
+
             /pesanans
             @else
             /pesanans
+
             @endif" tabindex="-1" >Daftar Pesanan</a>
           </li>
           @endauth
